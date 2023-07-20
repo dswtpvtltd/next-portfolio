@@ -4,6 +4,7 @@ import {
   CREATE_PORTFOLIO,
   UPDATE_PORTFOLIO,
   DELETE_PORTFOLIO,
+  USER_SIGNUP,
 } from "@/apollo/mutations";
 
 export const useGetPortfolio = () => useQuery(GET_PORTFOLIOS);
@@ -35,3 +36,6 @@ export const useCreatePortfolio = () =>
       });
     },
   });
+
+//create new portfolios
+export const useSignUp = () => useMutation(USER_SIGNUP);

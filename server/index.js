@@ -3,7 +3,8 @@ const next = require("next");
 const cors = require("cors");
 
 //connect to data
-require("./database/index").connect();
+const db = require("./database");
+db.connect();
 
 const port = parseInt(process.env.PORT, 10) || 3000;
 const dev = process.env.NODE_DEV !== "production";
@@ -13,18 +14,17 @@ const handle = app.getRequestHandler();
 app.prepare().then(async () => {
   const server = express();
 
-  const apolloServer = require("./graphql").createApolloServer();
-  await apolloServer.start();
-  apolloServer.applyMiddleware({ app: server, cors: false });
+  require("./middlewares").init(server, db);
 
   server.use(
     cors({
-      origin: "*",
-      methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-      preflightContinue: false,
-      optionsSuccessStatus: 204,
+      origin: ["https://studio.apollographql.com"],
     })
   );
+
+  const apolloServer = require("./graphql").createApolloServer();
+  await apolloServer.start();
+  apolloServer.applyMiddleware({ app: server, cors: false });
 
   server.all("*", (req, res) => {
     return handle(req, res);

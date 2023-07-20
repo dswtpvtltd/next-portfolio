@@ -1,5 +1,3 @@
-const Portfolio = require("../../database/models/portfolio");
-
 exports.portfolioQueries = {
   portfolio: async (_root, args, ctx) => {
     return await ctx.models.Portfolio.getById(args.id);

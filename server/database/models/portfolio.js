@@ -38,6 +38,7 @@ const portfolioSchema = new Schema({
     type: Date,
     required: true,
   },
+  user: { type: Schema.Types.ObjectId, ref: "User" },
   createdAt: {
     type: Date,
     default: () => Date.now(),

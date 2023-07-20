@@ -9,12 +9,14 @@ import {
   useDeletePortfolio,
   useCreatePortfolio,
 } from "@/apollo/actions";
+import { useSignUp } from "../../apollo/actions";
 const Portfolios = () => {
   const { data } = useGetPortfolio();
 
   const [updatedPortfolio] = useUpdatePortfolio();
   const [deletePortfolio] = useDeletePortfolio();
   const [createPortfolio] = useCreatePortfolio();
+  const [signUp] = useSignUp();
 
   const portfolios = (data && data.portfolios) || [];
 
@@ -28,6 +30,9 @@ const Portfolios = () => {
         </div>
         <button onClick={createPortfolio} className="btn btn-primary">
           Create Portfolio
+        </button>
+        <button onClick={signUp} className="btn btn-primary">
+          create user
         </button>
       </section>
       <section className="pb-5">

@@ -60,3 +60,24 @@ export const DELETE_PORTFOLIO = gql`
     deletePortfolio(id: $portfolioId)
   }
 `;
+
+export const USER_SIGNUP = gql`
+  mutation SignUp {
+    signUp(
+      input: {
+        avatar: "aaaaa"
+        email: "devvidya2004@gmail.com"
+        name: "aaaaaa"
+        password: "fdfdfdsf"
+        passwordConfirmation: "Admin@123"
+        username: "vidyasagar"
+      }
+    ) {
+      name
+      username
+      password
+      email
+      avatar
+    }
+  }
+`;

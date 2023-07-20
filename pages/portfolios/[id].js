@@ -1,5 +1,5 @@
 import React from "react";
-import { useQuery, getDataFromTree } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import { GET_PORTFOLIO } from "../../apollo/queries";
 import withApollo from "@/hoc/withApollo";
 

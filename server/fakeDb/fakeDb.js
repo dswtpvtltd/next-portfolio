@@ -1,5 +1,6 @@
-const { portfolios } = require("./data");
+const { portfolios, users } = require("./data");
 const Portfolio = require("../database/models/portfolio");
+const User = require("../database/models/user");
 
 class FakeDb {
   async populate() {
@@ -8,9 +9,11 @@ class FakeDb {
   }
   async addData() {
     await Portfolio.create(portfolios);
+    await User.create(users);
   }
   async clean() {
     await Portfolio.deleteMany();
+    await User.deleteMany();
   }
 }
 
